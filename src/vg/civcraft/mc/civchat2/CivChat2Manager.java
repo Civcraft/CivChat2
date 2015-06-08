@@ -157,6 +157,11 @@ public class CivChat2Manager {
 	 * @param chatMessage Message to send from sender to receive
 	 */
 	public void sendPrivateMsg(Player sender, Player receive, String chatMessage) {	
+		if(chatMessage.length()>256){
+			chatMessage = chatMessage.substring(0, 256);
+		}
+	
+	
 		String senderName = sender.getName();
 		String receiverName = receive.getName();
 		
@@ -222,6 +227,10 @@ public class CivChat2Manager {
 		
 		double chatdist = 0;
 		UUID uuid = NameAPI.getUUID(sender.getName());
+		
+		if(chatMessage.length()>256){
+			chatMessage = chatMessage.substring(0, 256);
+		}
 
 		//do height check
 		if(y > height){
